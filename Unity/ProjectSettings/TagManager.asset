@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - FallDedector
+  - Checkpoint
+  - Player_1
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - Background
+  - second layer
+  - character layer
+  - Touchable
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 2577102215
+    locked: 0
+  - name: Second Layor
+    uniqueID: 1179920707
+    locked: 0
+  - name: Environment
+    uniqueID: 1986275599
+    locked: 0
+  - name: Character Layer
+    uniqueID: 3437876261
+    locked: 0
