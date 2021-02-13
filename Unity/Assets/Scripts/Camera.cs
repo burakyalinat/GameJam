@@ -28,5 +28,10 @@ public class Camera : MonoBehaviour
             playerPosition = new Vector3(playerPosition.x - offset, playerPosition.y, playerPosition.z);
         }
         transform.position = Vector3.Lerp (transform.position, playerPosition, smoothness * Time.deltaTime);
+
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
     }
 }
