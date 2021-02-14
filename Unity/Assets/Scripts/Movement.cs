@@ -13,6 +13,7 @@ public class Movement : MonoBehaviour
     public LayerMask groundLayer;
     private bool isTouchingGround;
     private Animator playerAnimation;
+    public Vector3 respawnPoint;
 
 
     // Start is called before the first frame update
@@ -20,6 +21,7 @@ public class Movement : MonoBehaviour
     {
         rigidBody = GetComponent<Rigidbody2D>();
         playerAnimation = GetComponent<Animator>();
+        respawnPoint = transform.position;
     }
 
     // Update is called once per frame
@@ -43,20 +45,20 @@ public class Movement : MonoBehaviour
             rigidBody.velocity = new Vector2(0, rigidBody.velocity.y);
         }
 
-        if (Input.GetButtonDown ("Jump") && isTouchingGround)
+        if (Input.GetButtonDown("Jump") && isTouchingGround)
         {
             rigidBody.velocity = new Vector2(rigidBody.velocity.x, jump);
         }
 
-        playerAnimation.SetFloat ("Speed", Mathf.Abs (rigidBody.velocity.x));
-        playerAnimation.SetBool ("Ground", isTouchingGround);
+        playerAnimation.SetFloat("Speed", Mathf.Abs(rigidBody.velocity.x));
+        playerAnimation.SetBool("Ground", isTouchingGround);
     }
 
-    void onTriggerEnter2D(Collider2D other)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        if( other.tag == "FallDedector")
+        if (other.tag == "FallDetector")
         {
-            //
+            transform.position = respawnPoint;
         }
     }
 }
