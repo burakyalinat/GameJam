@@ -60,5 +60,10 @@ public class Movement : MonoBehaviour
         {
             transform.position = respawnPoint;
         }
+
+        if (other.tag == "Enemy")
+        {
+            transform.position = respawnPoint;
+        }
     }
 }

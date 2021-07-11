@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour
     private bool mustTurn;
     public Rigidbody2D rb;
     public Transform GroundCheck;
+    public Transform WallCheck;
     public LayerMask groundLayer;
 
     // Start is called before the first frame update
@@ -31,7 +32,7 @@ public class Enemy : MonoBehaviour
     {
         if ( mustPatrol)
         {
-            mustTurn = !Physics2D.OverlapCircle(GroundCheck.position, 0.1f, groundLayer);
+            mustTurn = (!Physics2D.OverlapCircle(GroundCheck.position, 0.1f, groundLayer) || Physics2D.OverlapCircle(WallCheck.position, 0.1f, groundLayer));
         }
     }
     void patrol()
