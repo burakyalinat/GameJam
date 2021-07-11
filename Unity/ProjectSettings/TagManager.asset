@@ -8,6 +8,7 @@ TagManager:
   - Checkpoint
   - Player_1
   - asd
+  - Enemy
   layers:
   - Default
   - TransparentFX
