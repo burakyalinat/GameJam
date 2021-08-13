@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class GemScript : MonoBehaviour
 {
+    private LevelManager gameLevelManager;
+    public int coinValue;
     // Start is called before the first frame update
     void Start()
     {
-        
+        gameLevelManager = FindObjectOfType<LevelManager>();
     }
 
     // Update is called once per frame
@@ -17,6 +19,11 @@ public class GemScript : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D other)
     {
-        Destroy(gameObject);
+        if(other.tag == "Player_1")
+        {
+            gameLevelManager.AddCoins(coinValue);
+            Destroy(gameObject);
+        }
+        
     }
 }

@@ -14,6 +14,7 @@ public class Movement : MonoBehaviour
     private bool isTouchingGround;
     private Animator playerAnimation;
     public Vector3 respawnPoint;
+    public LevelManager gameLevelManager;
 
 
     // Start is called before the first frame update
@@ -22,6 +23,7 @@ public class Movement : MonoBehaviour
         rigidBody = GetComponent<Rigidbody2D>();
         playerAnimation = GetComponent<Animator>();
         respawnPoint = transform.position;
+        gameLevelManager = FindObjectOfType<LevelManager> ();
     }
 
     // Update is called once per frame
@@ -33,12 +35,12 @@ public class Movement : MonoBehaviour
         if (movement > 0f)
         {
             rigidBody.velocity = new Vector2(movement * speed, rigidBody.velocity.y);
-            transform.localScale = new Vector3(1f, 1f, 1f);
+            transform.localScale = new Vector2(1f, 1f);
         }
         else if (movement < 0f)
         {
             rigidBody.velocity = new Vector2(movement * speed, rigidBody.velocity.y);
-            transform.localScale = new Vector3(-1f, 1f, 1f);
+            transform.localScale = new Vector2(-1f, 1f);
         }
         else
         {
@@ -56,14 +58,19 @@ public class Movement : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "asd")
+        if (other.tag == "FallDedector")
         {
-            transform.position = respawnPoint;
+            gameLevelManager.Respawn();
         }
 
         if (other.tag == "Enemy")
         {
-            transform.position = respawnPoint;
+            gameLevelManager.Respawn();
+        }
+
+        if (other.tag == "Checkpoint")
+        {
+            respawnPoint = other.transform.position;
         }
     }
 }
